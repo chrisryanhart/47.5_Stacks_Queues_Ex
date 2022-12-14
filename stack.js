@@ -28,9 +28,10 @@ class Stack {
       this.first = newNode;
       this.last = newNode;
     }else {
-      let oldLast = this.last;
-      oldLast.next = newNode;
-      this.last = newNode;
+      // newNode = 
+      let oldFirst = this.first;
+      newNode.next = oldFirst;
+      this.first = newNode;
     }
 
     this.size ++;
@@ -43,18 +44,39 @@ class Stack {
 
   pop() {
 
+    if(this.size === 0) throw new Error;
+
+    let firstVal = this.first.val;
+    // LIFO
+    // remove the newest node from the stack
+    // remove the first node and return the val
+
+    if(this.size === 1){
+      this.first = null;
+      this.last = null;
+    }else if(this.size > 1){
+      this.first = this.first.next;
+    }
+
+    this.size --;
+    return firstVal;
+
   }
 
   /** peek(): return the value of the first node in the stack. */
 
   peek() {
-
+    return this.first.val;
   }
 
   /** isEmpty(): return true if the stack is empty, otherwise false */
 
   isEmpty() {
-
+    if(this.size === 0){
+      return true;
+    }else{
+      return false;
+    }
   }
 }
 
