@@ -18,9 +18,24 @@ class Stack {
   }
 
   /** push(val): add new value to end of the stack. Returns undefined. */
+  // first should be the most recent
+  // tail should be the oldest node
 
   push(val) {
+    let newNode = new Node(val);
 
+    if(this.size === 0){
+      this.first = newNode;
+      this.last = newNode;
+    }else {
+      let oldLast = this.last;
+      oldLast.next = newNode;
+      this.last = newNode;
+    }
+
+    this.size ++;
+
+    return
   }
 
   /** pop(): remove the node from the top of the stack
